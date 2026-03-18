@@ -1,9 +1,9 @@
 from random import randint
 
 class Gladiator:
-    def __init__(self, name, weapon = None):
+    def __init__(self, name: str, weapon: str = None):
         self.name = name
-        self.hp = 50 # fixing it for testing randint(80,100) 
+        self.hp = randint(80,100) 
         self.speed = randint(1,10)
         self.is_alive = 1
         self.acts_every = 11-self.speed
@@ -19,7 +19,7 @@ class Gladiator:
     def report_stats(self):
         return f"{self.report_hp()} and {self.report_speed()}"
     
-    def take_damage(self, amount):
+    def take_damage(self, amount: int):
         self.hp -= amount
         
         if self.hp <= 0:
@@ -50,6 +50,8 @@ class Arena:
         
     def do_battle(self):
         tick = 1
+        print(f"I am {self.p1.name} and {self.p1.report_stats()}")
+        print(f"I am {self.p2.name} and {self.p2.report_stats()}")
         while (self.p1.is_alive == 1 and self.p2.is_alive == 1) and tick <= 30:
             print(f"---Tick {tick} ---")
             attackers = []
